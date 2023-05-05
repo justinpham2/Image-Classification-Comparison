@@ -61,8 +61,11 @@ Show a few visualization of the data and say a few words about what you see.
         * Loss: Categorical_Crossentropy
         * Optimizer: Adam
         * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
-        * Training: 
+        * Training: The model was created using Keras and was made Sequentially. Then it was instantiated and trained via Google Colaboratory. The training took 5 minutes per dataset, with 30 epochs and a batch size of 64.  
+        * 
 
+  
+  
 ### Training
 
 * Describe the training:
