@@ -25,10 +25,22 @@ Include only the sections that are relevant an appropriate.
   * Size: How much data?
   * Instances (Train, Test, Validation Split): how many data points? Ex: 1000 patients for training, 200 for testing, none for validation
 
+* Scenery Dataset:
+  * Type: Image Data
+    * Input: Scenery images (150x150 pixel jpegs) 6 types of scenery: "Buildings", "Forest", "Glacier","Mountain","Sea" and "Street"
+    * Input: Training/Testing Images, output: Training/Testing Labels.
+  * Size: 399 MB total.
+  * Instances: (Train, Test, Prediction split): Train: 14,000 images, Test: 3000 images, Prediction: 7300 images. 
+
 #### Preprocessing / Clean up
 
 * Describe any manipulations you performed to the data.
 
+* Scenery Dataset:
+  * For the scenery dataset, the images were all of size 150x150 so in order to use with AlexNet architecture they had to be resized to 227x227 for proper usage. 
+  * The libraries predominantly used for resizing were *Pandas* and *os*. Used file paths to iterate through folders in Google Colaboratory drive, resized the image   using *os* and uploaded the images into lists. 
+  * After shuffling, normalizing and one-hot encoding, the lists were converted into arrays for the Machine Learning algorithm.
+   
 #### Data Visualization
 
 Show a few visualization of the data and say a few words about what you see.
