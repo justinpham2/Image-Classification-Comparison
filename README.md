@@ -156,61 +156,50 @@ Model architectures are also stored in the `datasetload` module, although they w
 ![loss-rps](pictures/CustomArch/loss_rps.png) ![loss-nature](pictures/CustomArch/loss_nature.png) ![loss-eyes](pictures/CustomArch/loss_eyes.png)
 
 ### Conclusions
+* Unsure about what happened with VGGNet.
+ * All other datasets had accuracy that was substantially better than random guessing
 
-* State any conclusions you can infer from your work. Example: LSTM work better than GRU.
+* All other models are effective especially on the RPS dataset. The pixel values are more uniform. 
+
+* Densenet works better for RPS with 0.998 compared to Eyes and Nature.
+* Alexnet and Dense121 worked best for Nature with ~0.76 accuracy. 
+* Custom Arch worked best for eyes with ~0.84 accuracy.
+
 
 ### Future Work
 
-* What would be the next thing that you would try.
-* What are some other studies that can be done starting from here.
+* Add a confusion matrix to evalutate and analyze the models performance.
+* Lower the parameters for each model to increase performance and accuracy. 
+* Train more images with higher number of epochs
+* Split a small part of the training set for validation data. 
 
 ## How to reproduce results
 
-* In this section, provide instructions at least one of the following:
-   * Reproduce your results fully, including training.
-   * Apply this package to other data. For example, how to use the model you trained.
-   * Use this package to perform their own study.
-* Also describe what resources to use for this package, if appropirate. For example, point them to Collab and TPUs.
+* Google Colab Pro may be needed, which costs $9.99 a month. 
 
 ### Overview of files in repository
 
-* Describe the directory structure, if any.
-* List all relavent files and describe their role in the package.
-* An example:
-  * utils.py: various functions that are used in cleaning and visualizing data.
-  * preprocess.ipynb: Takes input data in CSV and writes out data frame after cleanup.
-  * visualization.ipynb: Creates various visualizations of the data.
-  * models.py: Contains functions that build the various models.
-  * training-model-1.ipynb: Trains the first model and saves model during training.
-  * training-model-2.ipynb: Trains the second model and saves model during training.
-  * training-model-3.ipynb: Trains the third model and saves model during training.
-  * performance.ipynb: loads multiple trained models and compares results.
-  * inference.ipynb: loads a trained model and applies it to test data to create kaggle submission.
-
-* Note that all of these notebooks should contain enough text for someone to understand what is happening.
+* Folder: Notebooks
+ * Contains all models used as well as module. 
+* Folder: Pictures
+ * Contains pictures and graphs used in readme. 
 
 ### Software Setup
-* List all of the required packages.
-* If not standard, provide or point to instruction for installing the packages.
-* Describe how to install your package.
-
-### Data
-
-* Point to where they can download the data.
-* Lead them through preprocessing steps, if necessary.
-
-### Training
-
-* Describe how to train the model
-
-#### Performance Evaluation
-
-* Describe how to run the performance evaluation.
-
+* `keras, sklearn, pandas, matplotlib, tensorflow, cv2, os, numpy, glob, PIL, opendatasets`
+* To install packages: `!pip install opendatasets` and import the rest. 
 
 ## Citations
 
-* Provide any references.
+* https://towardsdatascience.com/implementing-alexnet-cnn-architecture-using-tensorflow-2-0-and-keras-2113e090ad98  
+* https://medium.com/analytics-vidhya/vggnet-architecture-explained-e5c7318aa5b6
+* https://www.kaggle.com/code/blurredmachine/alexnet-architecture-a-complete-guide/notebook
+* https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c 
+* https://www.kaggle.com/code/dansbecker/deep-learning-from-scratch-daily 
+* https://arxiv.org/abs/1608.06993
+* https://keras.io/api/applications/densenet/
+* https://iq.opengenus.org/architecture-of-densenet121/
+* https://towardsdatascience.com/review-densenet-image-classification-b6631a8ef803
+
 
 
 
