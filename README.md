@@ -1,6 +1,8 @@
 ![](UTA-DataScience-Logo.png)
 
 # Image Classification using Various CNNs
+![image](https://user-images.githubusercontent.com/112579358/236504959-21f04375-28fe-43c8-8fdf-4a2b1abc96d6.png)
+
 ### Authors: Justin Pham, John Aguinaga, Jason Bard, Bavithra Lakshmanasamy
 
 This repository holds an attempt to use multiple CNNs on multiple image datasets in order to successfully classify them.
@@ -53,7 +55,7 @@ Image processing methods are stored in the [`datasetload`](notebooks/datasetload
   
 * Eyes Dataset:
   * As the images in the dataset were of varying sizes without any standard dimensions, they were resized to 224x224 to ensure compatibility with the Densenet model.
-  * The data was pre-processed using libraries like openCV and Pandas. The pixel values were normalized and the labels were one-hot encoded. 
+  * The data was pre-processed using libraries like `openCV` and `Pandas`. The pixel values were normalized and the labels were one-hot encoded. 
    
 #### Data Visualization
 
