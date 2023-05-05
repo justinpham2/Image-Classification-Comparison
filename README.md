@@ -1,45 +1,47 @@
 ![](UTA-DataScience-Logo.png)
 
-# Project Title
+# Image Classification using Various CNNs
+### Authors: Justin Pham, John Aguinaga, Jason Bard, Bavithra Lakshmanasamy
 
-* **One Sentence Summary** Ex: This repository holds an attempt to apply LSTMs to Stock Market using data from
-"Get Rich" Kaggle challenge (provide link). 
+This repository holds an attempt to use multiple CNNs on multiple image datasets in order to successfully classify them.
 
 ## Overview
 
-* This section could contain a short paragraph which include the following:
-  * **Definition of the tasks / challenge**  Ex: The task, as defined by the Kaggle challenge is to use a time series of 12 features, sampled daily for 1 month, to predict the next day's price of a stock.
-  * **Your approach** Ex: The approach in this repository formulates the problem as regression task, using deep recurrent neural networks as the model with the full time series of features as input. We compared the performance of 3 different network architectures.
-  * **Summary of the performance achieved** Ex: Our best model was able to predict the next day stock price within 23%, 90% of the time. At the time of writing, the best performance on Kaggle of this metric is 18%.
+Our group tested four separate CNN architectures on three separate datasets. This includes a rock-paper-scissors (RPS) dataset, a natural scenery (Nature/Scenery) dataset, and a Driver Drowsiness Detection (Eyes) dataset, all freely available on Kaggle. Our architectures include one based on VGGNet, one based one AlexNet, one based on Dense121, and a custom architecture.
 
-## Summary of Workdone
-
-Include only the sections that are relevant an appropriate.
+## Summary of Work Done
 
 ### Data
-
-* Data:
-  * Type: For example
-    * Input: medical images (1000x1000 pixel jpegs), CSV file: image filename -> diagnosis
-    * Input: CSV file of features, output: signal/background flag in 1st column.
-  * Size: How much data?
-  * Instances (Train, Test, Validation Split): how many data points? Ex: 1000 patients for training, 200 for testing, none for validation
 
 * Scenery Dataset:
   * Type: Image Data
     * Input: Scenery images (150x150 pixel jpges) 6 types of scenery: "Buildings", "Forest", "Glacier","Mountain","Sea" and "Street"
     * Input: Training/Testing Images, output: Training/Testing Labels.
   * Size: 399 MB total.
-  * Instances: (Train, Test, Prediction split): Train: 14,000 images, Test: 3000 images, Prediction: 7300 images. 
+  * Instances: (Train, Test, Prediction split): Train: 14,000 images, Test: 3000 images, Prediction: 7300 images.
+    * Prediction images did not have labels.
+  * Available on [Kaggle](https://www.kaggle.com/datasets/puneet6060/intel-image-classification).
+  
+* Rock-Paper-Scissors (RPS) Dataset:
+  * 2188 images of individual hand signals against a green background
+    * 726 Rocks, 710 Papers, 752 Scissors
+  * Stored in PNG format (200 x 300)
+  * Data size: 160 MB
+    * Images are included twice, leading to a true size of 321 MB.
+  * Available on [Kaggle](https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors).
 
 #### Preprocessing / Clean up
 
-* Describe any manipulations you performed to the data.
+Image processing methods are stored in the [`datasetload`](notebooks/datasetload.py) module.
 
 * Scenery Dataset:
   * For the scenery dataset, the images were all of size 150x150 so in order to use with AlexNet architecture they had to be resized to 227x227 for proper usage. 
-  * The libraries predominantly used for resizing were *Pandas* and *os*. Used file paths to iterate through folders in Google Colaboratory drive, resized the image   using *os* and uploaded the images into lists. 
+  * The libraries predominantly used for resizing were `Pandas` and `os`. Used file paths to iterate through folders in Google Drive, resized the image   using `os` and uploaded the images into lists. 
   * After shuffling, normalizing and one-hot encoding, the lists were converted into arrays for the Machine Learning algorithm.
+  
+* RPS Dataset:
+  * Images did not have to be resized since they were all 200x300. Instead, the neural network architecture shifted to allow for these to slot perfectly into the input layer.
+  * The main library used for opening the images with `PIL`. The images were shuffled, normalized, and split into training and testing sets.
    
 #### Data Visualization
 
@@ -48,40 +50,60 @@ Show a few visualization of the data and say a few words about what you see.
 * Scenery Dataset:  
   * Picture randomly chosen from training dataset after one-hot encoding:  
    ![RandomPicture](pictures/AlexNet/sceneimage.png)
+   
+* RPS Dataset:
+
+From left to right: Rock, Paper, Scissors.
+
+![rock](pictures/VGGNet/rock.png) ![paper](pictures/VGGNet/paper.png) ![scissors](pictures/VGGNet/scissor.png)
      
 ### Problem Formulation
+
+#### Datasets
+
 * Scenery Dataset:
   * Input: Images of scenery 227x227 pixels (jpg).
-  * Output: Truth label
+  * Output: Classification one-hot label
   
-* Models:  
-  * AlexNet: A convolutional neural network containing eight layers; the first five are convolutional layers, some of them followed by max-pooling layers, and the last three were fully connected layers. 
-     * Loss: Categorical_Crossentropy
-     * Optimizer: Adam
-     * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
-     * Training: The model was created using Keras and was made Sequentially. Then it was instantiated and trained via Google Colaboratory. The training took 5    minutes per dataset, with 30 epochs and a batch size of 64.
+* RPS Dataset:
+  * Input: Images of rock-paper-scissors 200x300 pixels (png)
+  * Output: Classification one-hot label
 
- 
-     <img src="pictures/AlexNet/Scenery dataset visuals/loss_curve_and_accuracy (scenery).png" width="300" height="300"/>   <img src="pictures/AlexNet/RPS dataset visuals/loss_curve_and_accuracy (RPS).png" width="300" height="300"/>   <img src="pictures/AlexNet/Eyes dataset visuals/loss_curve_and_accuracy (eyes).png" width="300" height="300"/>
+Model architectures are also stored in the `datasetload` module, although they were copied and tweaked in the individual notebooks as well.
 
+#### Models
 
-  
-  
-### Training
-
-* Describe the training:
-  * How you trained: software and hardware.
-  * How did training take.
-  * Training curves (loss vs epoch for test/train).
-  * How did you decide to stop training.
-  * Any difficulties? How did you resolve them?
+* AlexNet: A convolutional neural network containing eight layers; the first five are convolutional layers, some of them followed by max-pooling layers, and the last three were fully connected layers. 
+   * Loss: Categorical_Crossentropy
+   * Optimizer: Adam
+   * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
+   * Training: The model was created using Keras and was made Sequentially. Then it was instantiated and trained via Google Colaboratory. The training took 5    minutes per dataset, with 30 epochs and a batch size of 64.
+     
+* VGGNet: Contains five blocks of convolutions separated by max-pooling, followed by a seven-layered DNN.
+  * Loss: Categorical Cross-entropy
+  * Optimizer: Adam
+  * Hyperparameters: Learning rate = 0.001
+  * Training: The model was created Sequentially through keras. It was training in Google Colab. Data loading and training took 15 minutes for each model, with 20 epochs.
 
 ### Performance Comparison
 
-* Clearly define the key performance metric(s).
-* Show/compare results in one table.
-* Show one (or few) visualization(s) of results, for example ROC curves.
+#### AlexNet
 
+![results](pictures/AlexNet/AlexNet_measures.png)    
+    
+<img src="pictures/AlexNet/Scenery dataset visuals/loss_curve_and_accuracy (scenery).png" width="300" height="300"/>   <img src="pictures/AlexNet/RPS dataset visuals/loss_curve_and_accuracy (RPS).png" width="300" height="300"/>   <img src="pictures/AlexNet/Eyes dataset visuals/loss_curve_and_accuracy (eyes).png" width="300" height="300"/>
+     
+
+#### VGGNet
+
+| Dataset          |  Accuracy  |   Precision |   Recall |       F1 |
+|:----------------:|:----------:|:-----------:|:--------:|:--------:|
+| RPS              |   0.337386 |    0.113829 | 0.337386 | 0.170227 |
+| Nature / Scenery |   0.175000 |    0.030625 | 0.175000 | 0.052128 |
+| Eyes             |   0.251732 |    0.063369 | 0.251732 | 0.10125  |
+
+![loss-rps](pictures/VGGNet/loss-rps.png) ![loss-nature](pictures/VGGNet/loss-nature.png) ![loss-eyes](pictures/VGGNet/loss-eyes.png)
+    
 ### Conclusions
 
 * State any conclusions you can infer from your work. Example: LSTM work better than GRU.
