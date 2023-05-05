@@ -73,6 +73,7 @@ From left to right: Rock, Paper, Scissors.
 
 * Eyes Dataset:
   * Loaded pictures from Training dataset
+  
   ![Open_closed](https://user-images.githubusercontent.com/112579358/236497468-a4a29adf-b8ae-4e36-b587-8c99c223565d.png)
   ![yawn_noyawn](https://user-images.githubusercontent.com/112579358/236497713-9ccaae3c-eea3-4002-9d5b-7c3c9f754471.png)
 
@@ -157,10 +158,9 @@ Model architectures are also stored in the `datasetload` module, although they w
 
 ### Conclusions
 * Unsure about what happened with VGGNet.
- * All other datasets had accuracy that was substantially better than random guessing
+  * All other datasets had accuracy that was substantially better than random guessing
 
 * All other models are effective especially on the RPS dataset. The pixel values are more uniform. 
-
 * Densenet works better for RPS with 0.998 compared to Eyes and Nature.
 * Alexnet and Dense121 worked best for Nature with ~0.76 accuracy. 
 * Custom Arch worked best for eyes with ~0.84 accuracy.
@@ -179,10 +179,15 @@ Model architectures are also stored in the `datasetload` module, although they w
 
 ### Overview of files in repository
 
-* Folder: Notebooks
- * Contains all models used as well as module. 
-* Folder: Pictures
- * Contains pictures and graphs used in readme. 
+* Folder: [Notebooks](notebooks)
+  * Contains all models used as well as module. 
+* Folder: [Pictures](pictures)
+  * Contains pictures and graphs used in readme. 
+* [Presentation](https://github.com/justinpham2/Image-Classification-Comparison/blob/main/Image%20Classification%20using%20Various%20CNNs.pdf)
+  * Presentation about this repository.
+* [Readme](README.md): **YOU ARE HERE**
+* [UTA Data Science Logo](UTA-DataScience-Logo.png)
+  * Logo of the data science program, displayed at the top of this Readme.
 
 ### Software Setup
 * `keras, sklearn, pandas, matplotlib, tensorflow, cv2, os, numpy, glob, PIL, opendatasets`
