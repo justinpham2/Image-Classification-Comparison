@@ -112,7 +112,7 @@ Model architectures are also stored in the `datasetload` module, although they w
 
 #### Custom Arch
 
-![results](pictures/CustomArch/results_image.png)
+![results](pictures/CustomArch/results_image1.png)
 
 ![loss-rps](pictures/CustomArch/loss_rps.png) ![loss-nature](pictures/CustomArch/loss_nature.png) ![loss-eyes](pictures/CustomArch/loss_eyes.png)
 
