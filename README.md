@@ -27,7 +27,7 @@ Include only the sections that are relevant an appropriate.
 
 * Scenery Dataset:
   * Type: Image Data
-    * Input: Scenery images (150x150 pixel jpegs) 6 types of scenery: "Buildings", "Forest", "Glacier","Mountain","Sea" and "Street"
+    * Input: Scenery images (150x150 pixel jpges) 6 types of scenery: "Buildings", "Forest", "Glacier","Mountain","Sea" and "Street"
     * Input: Training/Testing Images, output: Training/Testing Labels.
   * Size: 399 MB total.
   * Instances: (Train, Test, Prediction split): Train: 14,000 images, Test: 3000 images, Prediction: 7300 images. 
@@ -45,13 +45,23 @@ Include only the sections that are relevant an appropriate.
 
 Show a few visualization of the data and say a few words about what you see.
 
+* Scenery Dataset:  
+  * Picture randomly chosen from training dataset after one-hot encoding:  
+   ![RandomPicture](pictures/AlexNet/sceneimage.png)
+  
 ### Problem Formulation
+* Scenery Dataset:
+  * Input: Images of scenery 227x227 pixels (jpg).
+  * Output: Truth label
+  * Models:
 
-* Define:
-  * Input / Output
-  * Models
-    * Describe the different models you tried and why.
-  * Loss, Optimizer, other Hyperparameters.
+    AlexNet:
+      * A convolutional neural network containing eight layers; the first five are convolutional layers, some of them followed by max-pooling layers, and the last             three were fully connected layers.  
+
+        * Loss: Categorical_Crossentropy
+        * Optimizer: Adam
+        * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
+        * Training: 
 
 ### Training
 
