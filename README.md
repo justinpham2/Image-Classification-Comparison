@@ -86,10 +86,10 @@ Model architectures are also stored in the `datasetload` module, although they w
   * Training: The model was created Sequentially through keras. It was training in Google Colab. Data loading and training took 15 minutes for each model, with 20 epochs.
   
 * Custom Arch: Contains two blocks of convolutions seperated by max-pooling, followed by two-layered DNN. 
- * Loss: Categorical Cross-entropy
- * Optimizer: Adam
- * Hyperparameters: Learning rate = 0.001, Dropout = 0.4
- * Training: The model was created Sequentially through keras. It was training in Google Colab. Data loading and training took 4 minutes for each model, with 10 epochs and a batch size of 16. 
+  * Loss: Categorical Cross-entropy
+  * Optimizer: Adam
+  * Hyperparameters: Learning rate = 0.001, Dropout = 0.4
+  * Training: The model was created Sequentially through keras. It was training in Google Colab. Data loading and training took 4 minutes for each model, with 10 epochs and a batch size of 16. 
  
 ### Performance Comparison
 
