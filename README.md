@@ -111,7 +111,11 @@ Model architectures are also stored in the `datasetload` module, although they w
 ![loss-rps](pictures/VGGNet/loss-rps.png) ![loss-nature](pictures/VGGNet/loss-nature.png) ![loss-eyes](pictures/VGGNet/loss-eyes.png)
 
 #### Custom Arch
-    
+
+![results](pictures/CustomArch/results_image.png)
+
+![loss-rps](pictures/CustomArch/loss_rps.png) ![loss-nature](pictures/CustomArch/loss_nature.png) ![loss-eyes](pictures/CustomArch/loss_eyes.png)
+
 ### Conclusions
 
 * State any conclusions you can infer from your work. Example: LSTM work better than GRU.
