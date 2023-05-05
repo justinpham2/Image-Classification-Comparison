@@ -48,21 +48,22 @@ Show a few visualization of the data and say a few words about what you see.
 * Scenery Dataset:  
   * Picture randomly chosen from training dataset after one-hot encoding:  
    ![RandomPicture](pictures/AlexNet/sceneimage.png)
-  
+     
 ### Problem Formulation
 * Scenery Dataset:
   * Input: Images of scenery 227x227 pixels (jpg).
   * Output: Truth label
-  * Models:
+  
+* Models:  
+  * AlexNet: A convolutional neural network containing eight layers; the first five are convolutional layers, some of them followed by max-pooling layers, and the last three were fully connected layers. 
+     * Loss: Categorical_Crossentropy
+     * Optimizer: Adam
+     * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
+     * Training: The model was created using Keras and was made Sequentially. Then it was instantiated and trained via Google Colaboratory. The training took 5    minutes per dataset, with 30 epochs and a batch size of 64.
 
-    AlexNet:
-      * A convolutional neural network containing eight layers; the first five are convolutional layers, some of them followed by max-pooling layers, and the last             three were fully connected layers.  
+ 
+     <img src="pictures/AlexNet/Scenery dataset visuals/loss_curve_and_accuracy (scenery).png" width="300" height="300"/>   <img src="pictures/AlexNet/RPS dataset visuals/loss_curve_and_accuracy (RPS).png" width="300" height="300"/>   <img src="pictures/AlexNet/Eyes dataset visuals/loss_curve_and_accuracy (eyes).png" width="300" height="300"/>
 
-        * Loss: Categorical_Crossentropy
-        * Optimizer: Adam
-        * Other hyperparameters: Learning rate = 0.001, Dropout = 0.5
-        * Training: The model was created using Keras and was made Sequentially. Then it was instantiated and trained via Google Colaboratory. The training took 5 minutes per dataset, with 30 epochs and a batch size of 64.  
-        * 
 
   
   
