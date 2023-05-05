@@ -29,6 +29,14 @@ Our group tested four separate CNN architectures on three separate datasets. Thi
   * Data size: 160 MB
     * Images are included twice, leading to a true size of 321 MB.
   * Available on [Kaggle](https://www.kaggle.com/datasets/drgfreeman/rockpaperscissors).
+  
+* Eyes Dataset:
+  * The dataset contains 2467 images of human faces that depict different eye states (open or closed) and yawning behavior (yawning or not yawning).
+  * Input: Images with eyes category (open, closed, yawn, no_yawn).
+  * Output: Training/Testing Lables
+  * Stored in JPG format (224 x 224)
+  * Data size: 169 MB
+  * Available on [Kaggle](https://www.kaggle.com/datasets/serenaraju/yawn-eye-dataset-new)
 
 #### Preprocessing / Clean up
 
@@ -41,7 +49,11 @@ Image processing methods are stored in the [`datasetload`](notebooks/datasetload
   
 * RPS Dataset:
   * Images did not have to be resized since they were all 200x300. Instead, the neural network architecture shifted to allow for these to slot perfectly into the input layer.
-  * The main library used for opening the images with `PIL`. The images were shuffled, normalized, and split into training and testing sets.
+  * The main library used for opening the images with `PIL`. The images were shuffled, normalized, and split into training and testing sets..
+  
+* Eyes Dataset:
+  * As the images in the dataset were of varying sizes without any standard dimensions, they were resized to 224x224 to ensure compatibility with the Densenet model.
+  * The data was pre-processed using libraries like openCV and Pandas. The pixel values were normalized and the labels were one-hot encoded. 
    
 #### Data Visualization
 
@@ -56,6 +68,13 @@ Show a few visualization of the data and say a few words about what you see.
 From left to right: Rock, Paper, Scissors.
 
 ![rock](pictures/VGGNet/rock.png) ![paper](pictures/VGGNet/paper.png) ![scissors](pictures/VGGNet/scissor.png)
+
+* Eyes Dataset:
+  * Loaded pictures from Training dataset
+  ![Open_closed](https://user-images.githubusercontent.com/112579358/236497468-a4a29adf-b8ae-4e36-b587-8c99c223565d.png)
+  ![yawn_noyawn](https://user-images.githubusercontent.com/112579358/236497713-9ccaae3c-eea3-4002-9d5b-7c3c9f754471.png)
+
+
      
 ### Problem Formulation
 
@@ -68,6 +87,10 @@ From left to right: Rock, Paper, Scissors.
 * RPS Dataset:
   * Input: Images of rock-paper-scissors 200x300 pixels (png)
   * Output: Classification one-hot label
+  
+* Eyes Dataset:
+  * Input: Images of Eyes 224x224 pixels (jpg)
+  * Output: Classification one- hot label
 
 Model architectures are also stored in the `datasetload` module, although they were copied and tweaked in the individual notebooks as well.
 
@@ -84,6 +107,12 @@ Model architectures are also stored in the `datasetload` module, although they w
   * Optimizer: Adam
   * Hyperparameters: Learning rate = 0.001
   * Training: The model was created Sequentially through keras. It was training in Google Colab. Data loading and training took 15 minutes for each model, with 20 epochs.
+  
+* DenseNET121: Convolutions seperated by Average pooling, followed by four dense blocks where inputs are passed on to and concatenated to pass on to the next block
+  * Loss: Categorical Cross-entropy
+  * Optimizer: Adam
+  * Hyperparameters: Learning rate = 0.001
+  * Training: The model was constructed using Keras' Functional API and trained on Google Colab. Each model took approximately 15-20 minutes to train, with 30 epochs being used.
   
 * Custom Arch: Contains two blocks of convolutions seperated by max-pooling, followed by two-layered DNN. 
   * Loss: Categorical Cross-entropy
@@ -109,6 +138,14 @@ Model architectures are also stored in the `datasetload` module, although they w
 | Eyes             |   0.251732 |    0.063369 | 0.251732 | 0.10125  |
 
 ![loss-rps](pictures/VGGNet/loss-rps.png) ![loss-nature](pictures/VGGNet/loss-nature.png) ![loss-eyes](pictures/VGGNet/loss-eyes.png)
+
+#### DenseNet121
+
+![results git](https://user-images.githubusercontent.com/112579358/236503459-75d924b7-62c0-4136-8bcf-1e082e18eef9.png)
+
+![curves git](https://user-images.githubusercontent.com/112579358/236503745-e7472720-df5a-437d-8650-c9dbd72b5de4.png)
+
+
 
 #### Custom Arch
 
